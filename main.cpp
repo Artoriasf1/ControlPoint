@@ -19,6 +19,14 @@ int main()
     cout << "Ошибка открытия файла!" << endl;
   }
 
+  file.seekg(0, ios::end); // Перемещаем указатель в конец файла
+  if (file.tellg() == 0)
+  {
+    cout << "Файл пуст! Вводите значения через файл numbersAndBinaryCode.txt" << endl;
+    file.close();
+  }
+  file.seekg(0, ios::beg); // Возвращаем указатель в начало для чтения
+
   while (getline(file, line))
   {
     istringstream iss(line); // Позволяет использовать оператор >> для извлечения данных из строки по частям
